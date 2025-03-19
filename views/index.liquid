@@ -1,0 +1,40 @@
+{% render 'partials/head.liquid' %}
+
+<h1>Oncollaboration</h1>
+
+<section>
+    <div class="search-bar">
+      <input type="text" placeholder="Search here..." />
+      <button class="button">Search</button>
+    </div>
+
+    <ul class="category-list">
+        {% for category in categories %}
+            <li class="category-element">{{ category.name }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<h2>About us</h2>
+    <img src="/assets/AVL-Logo-white.svg" alt="Antoni van Leeuwenhoek">
+    <img src="/assets/kemenkessardjito.png" alt="Sardjito" height="50px"> </a>
+    <p>
+        Oncollaboration serves as a space where radiologists from both Indonesia and the Netherlands can come together to share their expertise and discuss recent developments in their medical field.
+    </p>
+
+<h2>Webinars</h2>
+<p>
+    Take a look at one of the many Webinars!
+</p>
+
+<h2>Contourings</h2>
+<p>
+    Take a look at one of the many Contourings!
+</p>
+
+<h2>Articles</h2>
+<p>
+    Take a look at one of the many Articles!
+</p>
+
+{% render 'partials/foot.liquid' %}

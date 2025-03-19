@@ -1,0 +1,265 @@
+/*      TESTEN WAAROM DE BODY TE WIJD IS ONDER 36em */
+/*      RODE RANDJES LATEN JE MAKKELIJK ZIEN WAAR ER IETS UITSTEEKT     */
+/* 
+        *, *::before, *::after {
+            border:solid 1px red;
+        } 
+        */
+
+
+
+
+
+/*      MARK: HEADER     */
+header {
+    height: 8em;
+    width: 100%;
+    position: relative;
+
+    .logoAvlH {
+        position: absolute;
+        top: 20%;
+        transform: translateY(-20%);
+        margin-left: 2%;
+    }
+
+    .logoSarH {
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        transform: translateY(-20%);
+        margin-left: 2%;
+    }
+}
+
+nav {
+    position: absolute;
+    top: 75%;
+    transform: translateY(-75%);
+    right: 5%;
+
+    a {
+        text-decoration: none;
+        margin: .7em;
+    }
+}
+
+
+
+
+/*      MARK: FOOTER     */
+footer {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0rem;
+    width: 100%;
+    /* position: sticky; */
+    bottom: 0em;
+
+    .footer-AVL {
+        margin: .8em;
+    }
+
+    .footer-list {
+        margin: .8em;
+    }
+
+    .logoAvlF {
+        bottom: 10%;
+        right: 1.5em;
+        margin-right: 2%;
+    }
+
+    .logoSarF {
+        bottom: 10%;
+        right: 1em;
+        margin-right: 2%;
+    }
+
+    @media (width > 36em) {
+        flex-direction: row;
+    }
+} 
+
+
+
+
+
+/*      MARK: INDEX     */
+
+.search-bar {
+    position: relative;
+    border-color: var(--accent-color-1);
+    height: 40px;
+    max-width: fit-content;
+    width: 800%;
+    margin: 0 20px;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+    .button {
+        right: 20px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #fff;
+        border: none;
+        padding: var(--padding-button);
+        border-radius: 6px;
+        background-color: var(--primary-color);
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        right: 1%;
+        transform: translateY(-50%);
+    }
+    
+}
+
+.search-bar input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: var(--font-size-lg);
+    font-weight: 400;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    padding: 0 100px 0 10px;
+    background-color: #fff;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .category-element {
+        background-color: var(--background-category-color);
+        margin: .5em;
+        padding: var(--padding-label);
+        border-radius: var(--border-radius-sm);
+        text-transform: capitalize;
+    }
+
+    :hover {
+        background-color: var(--primary-color);
+        color: var(--light-text);
+    }
+}
+
+.webinar-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(17em, 100%), 1fr));
+    gap: 1.5rem;
+    padding: clamp(1rem, 5vw, 2rem);
+    gap:clamp(1rem, 5vw, 2rem);
+}
+
+.webinar-item {
+    border-radius: var(--border-radius-md);
+
+    .tumbnail-webinar {
+        width: 100%;
+        border-radius: var(--border-radius-md);
+    }
+
+    .title-webinar {
+        font-size: var(--font-size-lg);
+        margin: .4em;
+    }
+
+    .speaker-webinar {
+        font-size: var(--font-size-md);
+        color: var(--accent-color-1);
+        text-transform: uppercase;
+        margin: .4em;
+    }
+
+    .date-webinar {
+        color: var(--hover-state-color);
+        margin: .4em;
+    }
+
+    .category-label {
+        background-color: var(--primary-color);
+        padding: var(--padding-label);
+        border: none;
+        border-radius: var(--border-radius-sm);
+        color: var(--light-text);
+        max-width: fit-content;
+        text-transform: capitalize;
+        margin: .4em;
+    }
+
+}
+
+
+
+
+
+/*      MARK: DETAIL WEBINAR     */
+
+
+video {
+    width: 90%;
+    margin: 1em;
+}
+
+
+
+
+
+/*      MARK: MEDIA T     */
+
+@media (min-width: 770px) {
+
+    header {
+        height: 5em;
+    }
+
+    header .logoH {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    nav {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .search-bar {
+        max-width: 700px;
+        width: 1000%;
+        justify-self: center;
+        height: 50px;
+    }
+
+    .category-list {
+        justify-content: center;
+    }
+
+    .webinars-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    footer {
+        align-items: center;
+        justify-content: space-between;
+    }
+
+}
+
+
+
+
+
+/*      MARK: MEDIA D     */
+
+@media (min-width: 1024px) {
+
+    .webinars-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+}

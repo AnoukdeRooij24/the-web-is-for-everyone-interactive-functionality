@@ -24,16 +24,88 @@ app.engine('liquid', engine.express());
 app.set('views', './views')
 
 
-console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
+// console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
 
-/*
+// Variabelen met api links
+const apiEndpoint = "https://fdnd-agency.directus.app/items/avl_"
+const apiCategories = "categories"
+const apiComments = "comments"
+const apiContourings = "contourings"
+const apiSpeakers = "speakers"
+const apiUsers = "users"
+
+// Doe een fetch naar de data die je nodig hebt
+const categoriesResponse = await fetch(`${apiEndpoint}${apiCategories}`)
+const commentsResponse = await fetch(`${apiEndpoint}${apiComments}`)
+const contouringsResponse = await fetch(`${apiEndpoint}${apiContourings}`)
+const speakersResponse = await fetch(`${apiEndpoint}${apiSpeakers}`)
+const usersResponse = await fetch(`${apiEndpoint}${apiUsers}`)
+
+// Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
+const categoriesResponseJSON = await categoriesResponse.json()
+const commentsResponseJSON = await commentsResponse.json()
+const contouringsResponseJSON = await contouringsResponse.json()
+const speakersResponseJSON = await speakersResponse.json()
+const usersResponseJSON = await usersResponse.json()
+
+// FETCH JSON
+async function fetchJson(url) {
+  const response = await fetch(url);
+  const responseJSON = await response.json();
+  return responseJSON
+}
+
+
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
-app.get(…, async function (request, response) {
-  
+// INDEX
+app.get('/', async function (request, response) {
+
   // Zie https://expressjs.com/en/5x/api.html#res.render over response.render()
-  response.render(…)
+  response.render('index.liquid')
 })
-*/
+
+// WEBINARS
+app.get('/webinars', async function (request, response) {
+  const apiWebinars = "webinars"
+  const webinarFields = '?fields=title,thumbnail,date,categories.*.*,speakers.*.*'
+  
+  const webinarsResponse = await fetch(`${apiEndpoint}${apiWebinars}${webinarFields}`)
+  const webinarsResponseJSON = await webinarsResponse.json()
+
+  response.render('webinars.liquid', {    
+    categories: categoriesResponseJSON.data, 
+    comments: commentsResponseJSON.data, 
+    contourings: contouringsResponseJSON.data, 
+    speakers: speakersResponseJSON.data, 
+    users: usersResponseJSON.data, 
+    webinars: webinarsResponseJSON.data })
+})
+
+
+
+// DETAIL
+app.get('/detail:id', async function (request, response) {
+  const apiWebinars = "webinars"
+  const webinarFields = '?fields=title,thumbnail,date,categories.*.*,speakers.*.*'
+  const apiViews = (apiEndpoint + "?fields=views")
+
+  const webinarsResponse = await fetch(`${apiEndpoint}${apiWebinars}${webinarFields}'?filter={"id":{"_icontains":"' + request.params.id '"}}`)
+  const webinarsResponseJSON = await webinarsResponse.json()
+
+  const viewsResponse = await fetch(`${apiViews}`)
+  const viewsResponseJSON = await viewsResponse.json()
+  console.log(viewsResponseJSON)
+
+  response.render('detail.liquid', {
+    categories: categoriesResponseJSON.data, 
+    comments: commentsResponseJSON.data, 
+    contourings: contouringsResponseJSON.data, 
+    speakers: speakersResponseJSON.data, 
+    users: usersResponseJSON.data, 
+    webinars: webinarsResponseJSON.data,
+    views: viewsResponseJSON.data })
+})
+
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
