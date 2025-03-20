@@ -84,29 +84,41 @@ app.get('/webinars', async function (request, response) {
 
 
 // DETAIL
-app.get('/detail', async function (request, response) {
-  const apiWebinars = "webinars"
-  const webinarFields = '?fields=title,thumbnail,date,categories.*.*,speakers.*.*'
-  const viewField = '?fields=views,id'
+// app.get('/detail', async function (request, response) {
+//   const apiWebinars = "webinars"
+//   const webinarFields = '?fields=title,thumbnail,date,categories.*.*,speakers.*.*'
+//   const viewField = '?fields=views,id'
 
-  const webinarsResponse = await fetch(`${apiEndpoint}${apiWebinars}${webinarFields}`)
-  const webinarsResponseJSON = await webinarsResponse.json()
+//   const webinarsResponse = await fetch(`${apiEndpoint}${apiWebinars}${webinarFields}`)
+//   const webinarsResponseJSON = await webinarsResponse.json()
 
-  const viewsFieldResponse = await fetch(`${apiEndpoint}${apiWebinars}${viewField}&filter={%22id%22:${request.params.id}}`) 
-  // const viewFieldResponse = await fetch(`${viewField}`)
-  const viewsFieldResponseJSON = await viewsFieldResponse.json()
-  console.log(viewsFieldResponseJSON)
+//   const viewsFieldResponse = await fetch(`${apiEndpoint}${apiWebinars}${viewField}&filter={%22id%22:${request.params.id}}`) 
+//   // const viewFieldResponse = await fetch(`${viewField}`)
+//   const viewsFieldResponseJSON = await viewsFieldResponse.json()
+//   console.log(viewsFieldResponseJSON)
 
-  response.render('detail.liquid', {
-    categories: categoriesResponseJSON.data, 
-    comments: commentsResponseJSON.data, 
-    contourings: contouringsResponseJSON.data, 
-    speakers: speakersResponseJSON.data, 
-    users: usersResponseJSON.data, 
-    webinars: webinarsResponseJSON.data,
-    views: viewsFieldResponseJSON.data })
+//   response.render('detail.liquid', {
+//     categories: categoriesResponseJSON.data, 
+//     comments: commentsResponseJSON.data, 
+//     contourings: contouringsResponseJSON.data, 
+//     speakers: speakersResponseJSON.data, 
+//     users: usersResponseJSON.data, 
+//     webinars: webinarsResponseJSON.data,
+//     views: viewsFieldResponseJSON.data })
+// })
+
+app.get('/detail/:id', async function (request, response) { 
+  const webinarsdetailResponse = await fetch(`https://fdnd-agency.directus.app/items/avl_webinars/?fields=thumbnail,date,title,speakers,views,id&filter={"id":"${request.params.id}"}`)
+  const webinarsdetailResponseJSON = await webinarsdetailResponse.json()
+
+// console.log(webinarsdetailResponseJSON)
+
+response.render('detail.liquid', { 
+  webdetail: webinarsdetailResponseJSON.data[0] 
 })
 
+console.log(webinarsdetailResponseJSON.data)
+})
 
 
 /*
@@ -142,7 +154,7 @@ app.post(…, async function (request, response) {
 app.set('port', process.env.PORT || 8000)
 
 // Start Express op, gebruik daarbij het zojuist ingestelde poortnummer op
-app.listen(app.get('port'), function () {
+app.listen(app.get('port'), function () { })
   // Toon een bericht in de console
-  console.log(`Daarna kun je via http://localhost:${app.get('port')}/ jouw interactieve website bekijken.\n\nThe Web is for Everyone. Maak mooie dingen 🙂`)
-})
+  // console.log(`Daarna kun je via http://localhost:${app.get('port')}/ jouw interactieve website bekijken.\n\nThe Web is for Everyone. Maak mooie dingen 🙂`)
+
