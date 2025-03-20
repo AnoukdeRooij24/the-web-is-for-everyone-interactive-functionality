@@ -84,17 +84,18 @@ app.get('/webinars', async function (request, response) {
 
 
 // DETAIL
-app.get('/detail:id', async function (request, response) {
+app.get('/detail', async function (request, response) {
   const apiWebinars = "webinars"
   const webinarFields = '?fields=title,thumbnail,date,categories.*.*,speakers.*.*'
-  const apiViews = (apiEndpoint + "?fields=views")
+  const viewField = '?fields=views,id'
 
-  const webinarsResponse = await fetch(`${apiEndpoint}${apiWebinars}${webinarFields}'?filter={"id":{"_icontains":"' + request.params.id '"}}`)
+  const webinarsResponse = await fetch(`${apiEndpoint}${apiWebinars}${webinarFields}`)
   const webinarsResponseJSON = await webinarsResponse.json()
 
-  const viewsResponse = await fetch(`${apiViews}`)
-  const viewsResponseJSON = await viewsResponse.json()
-  console.log(viewsResponseJSON)
+  const viewsFieldResponse = await fetch(`${apiEndpoint}${apiWebinars}${viewField}&filter={%22id%22:${request.params.id}}`) 
+  // const viewFieldResponse = await fetch(`${viewField}`)
+  const viewsFieldResponseJSON = await viewsFieldResponse.json()
+  console.log(viewsFieldResponseJSON)
 
   response.render('detail.liquid', {
     categories: categoriesResponseJSON.data, 
@@ -103,8 +104,9 @@ app.get('/detail:id', async function (request, response) {
     speakers: speakersResponseJSON.data, 
     users: usersResponseJSON.data, 
     webinars: webinarsResponseJSON.data,
-    views: viewsResponseJSON.data })
+    views: viewsFieldResponseJSON.data })
 })
+
 
 
 /*
