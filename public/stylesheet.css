@@ -25,6 +25,13 @@ body {
   --hover-state-color: hsl(339, 26%, 80%);
   --accent-color-1: hsl(340, 100%, 15%);
 
+  /* NIEUWE HUISSTIJL KLEUR OPTIES */
+  --dark-green: #0D4A17;
+  --light-green: #0d4a175f;
+
+  --dark-blue: #0C5C6D;
+  --light-blue: #0c5b6d63;
+
   /* TEXT COLORS */
   --light-text: #ffff;
   --text-color: #0000;

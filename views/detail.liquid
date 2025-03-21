@@ -3,47 +3,60 @@
 
 <h1> {{ webdetail.title }} </h1>
 
-<video controls width="250">
-    <source src="https://fdnd-agency.directus.app/assets/{{ webdetail.video }}" height="100px"/>
-</video>
+{% if webdetail.video %}
+    <video controls width="250">
+        <source src="https://fdnd-agency.directus.app/assets/{{ webdetail.video }}" height="100px"/>
+    </video>
+{% endif %}
 
 <p> <img src="/assets/views_icon.svg" alt=""> {{ webdetail.views }} </p>
 <p> <img src="/assets/date_icon.svg" alt="">{{ webdetail.date }} </p>
 
+{% for category in webdetail.categories %}
+    <p>{{ category.avl_categories_id.name }}</p>
+{% endfor %}
+
+
 <h2>Q & A</h2>
-<h3>Ask a question</h3>
-<p>Hier komt een input field...</p>
+    <h3>Ask a question</h3>
+    <form  action="/detail/{{ webdetail.id }}" method="post">
+      <input type="text" name="comment" placeholder="Ask your question here..." />
+      <button type="submit" class="button">Submit</button>
+    </form>
+
 
 <h3>Comments</h3>
-<p>Hier komen de comments</p>
+
+    {% for comment in comments %} 
+        <p> {{  comment.content }}</p>
+    {% endfor %}  
 
 <h2>The speaker</h2>
-<h3> {{ webdetail.speaker }} </h3>
+
+    {% for speaker in webdetail.speakers %}
+        <h3> {{ speaker.avl_speakers_id.fullname }} </h3>
+        <p> {{ speaker.avl_speakers_id.entitle }} </p>
+        <img src="https://fdnd-agency.directus.app/assets/{{ speaker.avl_speakers_id.profile_picture }}">
+    {% endfor %}
+
+
+<h2> Transcript </h2>
+
+    {% for transcript in webdetail.transcript %}
+    <p> {{ webdetail.transcript }} </p>
+    {% endfor %}
+
+
 
 
 {% comment %} {% for webinar in webinars %}
 
-<h1>Webinar</h1>
-
-<video controls width="250">
-    <source src="https://fdnd-agency.directus.app/assets/{{ webinar.video }}" height="100px"/>
-</video>
-<h2>{{ webinar.title }}</h2>
 
 <div>
     {% for category in webinar.categories %}
         <p class="category">{{ category.avl_categories_id.name }}</p>
     {% endfor %}
 
-    <p>
-        <img src="/assets/views_icon.svg" alt="">
-        {{ webinar.views }} 
-    </p>
-
-    <p>
-        <img src="/assets/date_icon.svg" alt="">
-        {{ webinar.date | date: "%d-%m-%Y" }}
-    </p>
 </div>
 
 <h2>Q & A</h2>
