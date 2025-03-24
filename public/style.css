@@ -12,36 +12,44 @@
 
 /*      MARK: HEADER     */
 header {
-    height: 8em;
+    height: 10em;
     width: 100%;
-    justify-content: space-between;
-    position: relative;
     display: flex;
     flex-direction: column;
-
-    @media (width > 36em) {
-        flex-direction: row;
-    }
+    justify-self: center;
+    position: relative;
 
     .logoAvlH {
-        position: absolute;
-        top: 20%;
-        transform: translateY(-20%);
+        margin-top: 2%;
+        left: 1em;
         margin-left: 2%;
+
+        @media (width > 36em) {
+            transform: translateY(25%);
+        }
+
     }
 
     .logoSarH {
-        position: absolute;
-        top: 20%;
-        left: 10%;
-        transform: translateY(-20%);
+        margin-top: 2%;
+        left: 1.5em;
         margin-left: 2%;
+
+        @media (width > 36em) {
+            transform: translateY(20%);
+        }
+
+    }
+
+    @media (width > 36em) {
+        flex-direction: row;
+        height: 8em;
     }
 }
 
 nav {
     position: absolute;
-    top: 75%;
+    top: 85%;
     transform: translateY(-75%);
     right: 5%;
 
@@ -62,8 +70,8 @@ footer {
     flex-direction: column;
     padding: 1rem 0rem;
     width: 100%;
-    /* position: sticky; */
     bottom: 0em;
+    margin-top: 1em;
 
     .footer-AVL {
         margin: .8em;
@@ -94,10 +102,65 @@ footer {
 
 
 
-/*      MARK: INDEX     */
+/*      MARK: HOME     */
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 80%;
+    gap: 2em;
+}
 
+.about-us {
+    background-color: var(--hover-state-color);
+    border-radius: var(--border-radius-md);
+    padding: 1em;
+
+    .home-logo-avl {
+        height: 3em ;
+        margin: .3em;
+
+        @media (width > 36em) {
+            height: 9em;
+        }
+
+    }
+    
+    .home-logo-sar {
+        height: 4em;
+        margin: .3em;
+
+        @media (width > 36em) {
+            height: 10em;
+        }
+    }
+}
+
+.webinars-index {
+    background-color: var(--hover-state-color);
+    border-radius: var(--border-radius-md);
+    padding: 1em;
+}
+
+.contourings-index {
+    background-color: var(--hover-state-color);
+    border-radius: var(--border-radius-md);
+    padding: 1em;
+}
+
+.articles-index{
+    background-color: var(--hover-state-color);
+    border-radius: var(--border-radius-md);
+    padding: 1em;
+}
+
+
+
+
+/*      MARK: SEARCH BAR     */
 .search-bar {
     position: relative;
+    justify-self: center;
     border-color: var(--accent-color-1);
     height: 40px;
     max-width: fit-content;
@@ -155,6 +218,11 @@ footer {
     }
 }
 
+
+
+
+
+/*      MARK: WEBINARS     */
 .webinar-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(17em, 100%), 1fr));

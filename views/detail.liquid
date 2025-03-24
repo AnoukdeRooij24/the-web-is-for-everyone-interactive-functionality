@@ -46,27 +46,4 @@
     <p> {{ webdetail.transcript }} </p>
     {% endfor %}
 
-
-
-
-{% comment %} {% for webinar in webinars %}
-
-
-<div>
-    {% for category in webinar.categories %}
-        <p class="category">{{ category.avl_categories_id.name }}</p>
-    {% endfor %}
-
-</div>
-
-<h2>Q & A</h2>
-<h3>Ask a question</h3>
-<h3>Comments</h3>
-
-<h2>The speaker</h2>
-    {% for speaker in webinar.speakers %}
-        <p class="speakers">{{ speaker.avl_categories_id.name }}</p>
-    {% endfor %}
-
-{% endfor %} {% endcomment %}
 {% render 'partials/foot.liquid' %}

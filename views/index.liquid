@@ -15,26 +15,40 @@
     </ul>
 </section>
 
-<h2>About us</h2>
-    <img src="/assets/AVL-Logo-white.svg" alt="Antoni van Leeuwenhoek">
-    <img src="/assets/kemenkessardjito.png" alt="Sardjito" height="50px"> </a>
-    <p>
-        Oncollaboration serves as a space where radiologists from both Indonesia and the Netherlands can come together to share their expertise and discuss recent developments in their medical field.
-    </p>
+<section class="home">
+    <section class="about-us">
+        <h2>About us</h2>
+            <img class="home-logo-avl" src="/assets/AVL-Logo-white.svg" alt="Antoni van Leeuwenhoek">
+            <img class="home-logo-sar" src="/assets/kemenkessardjito.png" alt="Sardjito">
 
-<h2>Webinars</h2>
-<p>
-    Take a look at one of the many Webinars!
-</p>
+            <p>
+                Oncollaboration serves as a space where radiologists from both Indonesia and the Netherlands can come together to share their expertise and discuss recent developments in their medical field.
+            </p>
+    </section>
 
-<h2>Contourings</h2>
-<p>
-    Take a look at one of the many Contourings!
-</p>
+    <section class="webinars-index">
+        <h2>Webinars</h2>
+        <p>
+            Take a look at one of the many <a href="/webinars.liquid"> Webinars!</a>
+        </p>
+        {% comment %} LAATSTE WEBINAR TONEN {% endcomment %}
+    </section>
 
-<h2>Articles</h2>
-<p>
-    Take a look at one of the many Articles!
-</p>
+    <section class="contourings-index">
+        <h2>Contourings</h2>
+        <p>
+            Take a look at one of the many Contourings!
+        </p>
+        {% comment %} LAATSTE CONTOURING TONEN {% endcomment %}
+    </section>
+
+    <section class="articles-index">
+        <h2>Articles</h2>
+        <p>
+            Take a look at one of the many Articles!
+        </p>
+        {% comment %} LAATSTE ARTICLE TONEN {% endcomment %}
+    </section>
+</section>
 
 {% render 'partials/foot.liquid' %}
