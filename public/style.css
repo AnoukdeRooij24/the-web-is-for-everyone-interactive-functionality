@@ -106,7 +106,7 @@ footer {
 .search-bar {
     position: relative;
     justify-self: center;
-    border-color: var(--accent-color-1);
+    border-color: var(--dark-green);
     height: 40px;
     max-width: fit-content;
     width: 800%;
@@ -123,7 +123,7 @@ footer {
         border: none;
         padding: var(--padding-button);
         border-radius: 6px;
-        background-color: var(--primary-color);
+        background-color: var(--dark-green);
         cursor: pointer;
         position: absolute;
         top: 50%;
@@ -150,7 +150,7 @@ footer {
     flex-wrap: wrap;
 
     .category-element {
-        background-color: var(--background-category-color);
+        background-color: var(--light-green);
         margin: .5em;
         padding: var(--padding-label);
         border-radius: var(--border-radius-sm);
@@ -158,7 +158,7 @@ footer {
     }
 
     :hover {
-        background-color: var(--primary-color);
+        background-color: var(--dark-green);
         color: var(--light-text);
     }
 }
@@ -178,7 +178,7 @@ footer {
 }
 
 .about-us {
-    background-color: var(--hover-state-color);
+    background-color: var(--light-green);
     border-radius: var(--border-radius-md);
     padding: 1em;
 
@@ -203,19 +203,19 @@ footer {
 }
 
 .webinars-index {
-    background-color: var(--hover-state-color);
+    background-color: var(--light-green);
     border-radius: var(--border-radius-md);
     padding: 1em;
 }
 
 .contourings-index {
-    background-color: var(--hover-state-color);
+    background-color: var(--light-green);
     border-radius: var(--border-radius-md);
     padding: 1em;
 }
 
 .articles-index{
-    background-color: var(--hover-state-color);
+    background-color: var(--light-green);
     border-radius: var(--border-radius-md);
     padding: 1em;
 }
@@ -258,7 +258,7 @@ footer {
     }
 
     .category-label {
-        background-color: var(--primary-color);
+        background-color: var(--dark-green);
         padding: var(--padding-label);
         border: none;
         border-radius: var(--border-radius-sm);
@@ -283,7 +283,7 @@ video {
 }
 
 .category-detail {
-    background-color: var(--primary-color);
+    background-color: var(--dark-green);
     margin: .5em;
     padding: var(--padding-label);
     border-radius: var(--border-radius-sm);
@@ -299,7 +299,7 @@ video {
     scrollbar-color: hidden;
 
     .comment {
-        background-color: var(--background-category-color);
+        background-color: #fff;
         border-radius: var(--border-radius-sm);
         padding: var(--padding-button);
         max-width: 90%;
