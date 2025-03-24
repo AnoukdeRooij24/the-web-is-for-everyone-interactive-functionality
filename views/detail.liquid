@@ -13,36 +13,50 @@
 <p> <img src="/assets/date_icon.svg" alt="">{{ webdetail.date }} </p>
 
 {% for category in webdetail.categories %}
-    <p>{{ category.avl_categories_id.name }}</p>
+    <p class="category-detail">{{ category.avl_categories_id.name }}</p>
 {% endfor %}
+
+<h2>Description</h2>
+    <details class="description-detail">
+        <summary>Read description</summary>
+        <div>
+            <p> {{ webdetail.description }} </p>
+        </div>
+    </details>
 
 
 <h2>Q & A</h2>
     <h3>Ask a question</h3>
-    <form  action="/detail/{{ webdetail.id }}" method="post">
-      <input type="text" name="comment" placeholder="Ask your question here..." />
-      <button type="submit" class="button">Submit</button>
-    </form>
+    <section class="q-en-a">
+        <form  action="/detail/{{ webdetail.id }}" method="post">
+        <input type="text" name="comment" placeholder="Ask your question here..." />
+        <button type="submit" class="button">Submit</button>
+        </form>
+    </section>
 
 
-<h3>Comments</h3>
+    <h3>Comments</h3>
+        <section class="comments-detail">
+            {% for comment in comments %} 
+                    <p class="comment"> {{  comment.content }}</p>
+            {% endfor %}  
+        </section>
 
-    {% for comment in comments %} 
-        <p> {{  comment.content }}</p>
-    {% endfor %}  
 
 <h2>The speaker</h2>
 
     {% for speaker in webdetail.speakers %}
-        <h3> {{ speaker.avl_speakers_id.fullname }} </h3>
-        <p> {{ speaker.avl_speakers_id.entitle }} </p>
-        <img src="https://fdnd-agency.directus.app/assets/{{ speaker.avl_speakers_id.profile_picture }}">
+        <section class="speaker-detail">
+            <img class="speaker-picture" src="https://fdnd-agency.directus.app/assets/{{ speaker.avl_speakers_id.profile_picture }}">
+            <h3 class="speaker-name"> {{ speaker.avl_speakers_id.fullname }} </h3>
+            <p class="speaker-job"> {{ speaker.avl_speakers_id.entitle }} </p>
+        </section>
     {% endfor %}
 
 
 <h2> Transcript </h2>
 
-    <details>
+    <details class="transcript-detail">
         <summary>Read transcript</summary>
         <div>
             {% for transcript in webdetail.transcript %}
