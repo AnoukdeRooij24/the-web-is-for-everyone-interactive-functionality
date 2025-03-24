@@ -102,61 +102,6 @@ footer {
 
 
 
-/*      MARK: HOME     */
-.home {
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    width: 80%;
-    gap: 2em;
-}
-
-.about-us {
-    background-color: var(--hover-state-color);
-    border-radius: var(--border-radius-md);
-    padding: 1em;
-
-    .home-logo-avl {
-        height: 3em ;
-        margin: .3em;
-
-        @media (width > 36em) {
-            height: 9em;
-        }
-
-    }
-    
-    .home-logo-sar {
-        height: 4em;
-        margin: .3em;
-
-        @media (width > 36em) {
-            height: 10em;
-        }
-    }
-}
-
-.webinars-index {
-    background-color: var(--hover-state-color);
-    border-radius: var(--border-radius-md);
-    padding: 1em;
-}
-
-.contourings-index {
-    background-color: var(--hover-state-color);
-    border-radius: var(--border-radius-md);
-    padding: 1em;
-}
-
-.articles-index{
-    background-color: var(--hover-state-color);
-    border-radius: var(--border-radius-md);
-    padding: 1em;
-}
-
-
-
-
 /*      MARK: SEARCH BAR     */
 .search-bar {
     position: relative;
@@ -218,6 +163,62 @@ footer {
     }
 }
 
+
+
+
+
+
+/*      MARK: HOME     */
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 80%;
+    gap: 2em;
+}
+
+.about-us {
+    background-color: var(--hover-state-color);
+    border-radius: var(--border-radius-md);
+    padding: 1em;
+
+    .home-logo-avl {
+        height: 3em ;
+        margin: .3em;
+
+        @media (width > 36em) {
+            height: 9em;
+        }
+
+    }
+    
+    .home-logo-sar {
+        height: 4em;
+        margin: .3em;
+
+        @media (width > 36em) {
+            height: 10em;
+        }
+    }
+}
+
+.webinars-index {
+    background-color: var(--hover-state-color);
+    border-radius: var(--border-radius-md);
+    padding: 1em;
+}
+
+.contourings-index {
+    background-color: var(--hover-state-color);
+    border-radius: var(--border-radius-md);
+    padding: 1em;
+}
+
+.articles-index{
+    background-color: var(--hover-state-color);
+    border-radius: var(--border-radius-md);
+    padding: 1em;
+}
 
 
 
