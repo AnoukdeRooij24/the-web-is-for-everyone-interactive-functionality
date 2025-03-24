@@ -286,6 +286,28 @@ video {
 
 
 
+
+/*      MARK: 404     */
+.h1404 {
+    font-size: var(--font-size-6xl);
+    justify-self: center;
+}
+
+.h2404 {
+    font-size: var(--font-size-6xl);
+    justify-self: center;
+}
+
+.p404 {
+    font-size: var(--font-size-lg);
+    justify-self: center;
+}
+
+
+
+
+
+
 /*      MARK: MEDIA T     */
 
 @media (min-width: 770px) {
