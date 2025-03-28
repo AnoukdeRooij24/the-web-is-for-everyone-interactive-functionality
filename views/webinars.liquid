@@ -25,25 +25,28 @@
 
         <article class="webinar-item">
 
-            {% comment %} TUMBNAIL {% endcomment %}
-            <img class="tumbnail-webinar" src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}"  />
+                {% comment %} TUMBNAIL {% endcomment %}
+                <img class="tumbnail-webinar" src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}"  />
 
-            {% comment %} TITLE {% endcomment %}
-            <p class="title-webinar">{{ webinar.title }}</p>
+            <a href="/detail/:id" class="webinar-detail-link">
 
-            {% comment %} SPEAKER {% endcomment %}
-             {% for speaker in webinar.speakers %}
-                <p class="speaker-webinar"> {{ speaker.avl_speakers_id.fullname }}</p>
-            {% endfor %}
+                {% comment %} TITLE {% endcomment %}
+                <p class="title-webinar">{{ webinar.title }}</p>
 
-            {% comment %} DATE {% endcomment %}
-            <p class="date-webinar">{{ webinar.date }}</p>
+                {% comment %} SPEAKER {% endcomment %}
+                {% for speaker in webinar.speakers %}
+                    <p class="speaker-webinar"> {{ speaker.avl_speakers_id.fullname }}</p>
+                {% endfor %}
 
-            {% comment %} CATEGORY {% endcomment %}
-            {% for category in webinar.categories %}
-                <p class="category-label"> {{ category.avl_categories_id.name }}</p>
-            {% endfor %}
+                {% comment %} DATE {% endcomment %}
+                <p class="date-webinar">{{ webinar.date }}</p>
 
+                {% comment %} CATEGORY {% endcomment %}
+                {% for category in webinar.categories %}
+                    <p class="category-label"> {{ category.avl_categories_id.name }}</p>
+                {% endfor %}
+
+            </a>
         </article>
 
     {% endfor %}

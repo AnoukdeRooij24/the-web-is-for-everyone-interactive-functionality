@@ -232,6 +232,10 @@ footer {
     gap:clamp(1rem, 5vw, 2rem);
 }
 
+.webinar-detail-link {
+    text-decoration: none;
+}
+
 .webinar-item {
     border-radius: var(--border-radius-md);
 
@@ -247,13 +251,13 @@ footer {
 
     .speaker-webinar {
         font-size: var(--font-size-md);
-        color: var(--accent-color-1);
+        color: var(--dark-green);
         text-transform: uppercase;
         margin: .4em;
     }
 
     .date-webinar {
-        color: var(--hover-state-color);
+        color: var(--light-green);
         margin: .4em;
     }
 
@@ -292,6 +296,9 @@ video {
     max-width: fit-content;
 }
 
+::-webkit-scrollbar {
+    display: none;
+  }
 
 .comments-detail {
     max-height: 20em;

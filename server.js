@@ -111,7 +111,8 @@ app.get('/webinars', async function (request, response) {
 //     views: viewsFieldResponseJSON.data })
 // })
 
-app.get('/detail/:id', async function (request, response) { 
+
+app.get("/detail/:id", async function (request, response) { 
   const webinarsdetailResponse = await fetch(`https://fdnd-agency.directus.app/items/avl_webinars/?fields=thumbnail,date,video,duration,description,transcript,title,speakers.*.*,categories.*.*,views,id&filter={"id":"${request.params.id}"}`)
   const webinarsdetailResponseJSON = await webinarsdetailResponse.json()
 
