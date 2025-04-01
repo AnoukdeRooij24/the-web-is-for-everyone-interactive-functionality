@@ -9,12 +9,14 @@
     </video>
 {% endif %}
 
-<p> <img src="/assets/views_icon.svg" alt=""> {{ webdetail.views }} </p>
-<p> <img src="/assets/date_icon.svg" alt="">{{ webdetail.date }} </p>
+<section class="detail-watch-info">
+    <p class="detail-vieuws"> <img src="/assets/views_icon.svg" alt=""> {{ webdetail.views }} </p>
+    <p class="detail-date"> <img src="/assets/date_icon.svg" alt="">{{ webdetail.date }} </p>
 
-{% for category in webdetail.categories %}
-    <p class="category-detail">{{ category.avl_categories_id.name }}</p>
-{% endfor %}
+    {% for category in webdetail.categories %}
+        <p class="category-detail">{{ category.avl_categories_id.name }}</p>
+    {% endfor %}
+</section>
 
 <h2>Description</h2>
     <details class="description-detail">
@@ -24,27 +26,39 @@
         </div>
     </details>
 
-
 <h2>Q & A</h2>
-    <h3>Ask a question</h3>
-    <section class="q-en-a">
-        <form  action="/detail/{{ webdetail.id }}" method="post">
-        <input type="text" name="comment" placeholder="Ask your question here..." />
-        <button type="submit" class="button">Submit</button>
-        </form>
+    <h3>Comments</h3>
+    <section class="comments-detail">
+        {% for comment in comments %} 
+                <p class="comment"> {{  comment.content }}</p>
+        {% endfor %}  
     </section>
 
+    <h3>Ask a question</h3>
+    {% comment %} <section class="q-en-a">
+        <form  action="/detail/{{ webdetail.id }}" method="post">
+            <input type="text" name="comment" placeholder="Ask your question here..." />
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </section> {% endcomment %}
 
-    <h3>Comments</h3>
-        <section class="comments-detail">
-            {% for comment in comments %} 
-                    <p class="comment"> {{  comment.content }}</p>
-            {% endfor %}  
-        </section>
-
+    <section class="q-en-a">
+        {% if posted %}
+            <!-- Ideal state -->
+            <form  action="/detail/{{ webdetail.id }}" method="post" data-enhanced="form-{{ webdetail.id }}" >
+                <input type="text" name="comment" placeholder="Ask your question here..." />
+                <button type="submit" class="submit-button">Sent</button>
+            </form>
+        {% else %}
+            <!-- Empty state -->
+            <form  action="/detail/{{ webdetail.id }}" method="post" data-enhanced="form-{{ webdetail.id }}" >
+                <input type="text" name="comment" placeholder="Ask your question here..." />
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        {% endif %}
+    </section>
 
 <h2>The speaker</h2>
-
     {% for speaker in webdetail.speakers %}
         <section class="speaker-detail">
             <img class="speaker-picture" src="https://fdnd-agency.directus.app/assets/{{ speaker.avl_speakers_id.profile_picture }}">
@@ -55,7 +69,6 @@
 
 
 <h2> Transcript </h2>
-
     <details class="transcript-detail">
         <summary>Read transcript</summary>
         <div>

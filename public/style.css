@@ -57,6 +57,10 @@ nav {
         text-decoration: none;
         margin: .7em;
     }
+    :hover {
+        font-size: var(--font-size-lg);
+        transition-duration: .1s;
+    }
 }
 
 
@@ -160,6 +164,7 @@ footer {
     :hover {
         background-color: var(--dark-green);
         color: var(--light-text);
+        transition-duration: .1s;
     }
 }
 
@@ -284,6 +289,31 @@ footer {
 video {
     width: 90%;
     margin: 1em;
+
+    @media (width > 36em) {
+        width: 60%;
+    }   
+}
+
+.detail-watch-info {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:  
+    "date" 
+    "views" 
+    "category";
+
+    @media (width > 36em) {
+        grid-template-areas:  "date" "views" "category";
+
+    }
+}
+
+.detail-date {
+    grid-area: "date";
+}
+
+.detail-vieuws{
+    grid-area: "views";
 }
 
 .category-detail {
@@ -294,16 +324,32 @@ video {
     text-transform: capitalize;
     color: var(--light-text);
     max-width: fit-content;
+    grid-area: "category";
+}
+
+.description-detail {
+    font-family: "Lato", 'Courier New', Courier, monospace;
+    font-size: var(--font-size-md);
+    font-weight: 400;
+    padding: .5%;
+    background-color: var(--beige-darker);
+
+    summary{
+        font-family: "Lato", 'Courier New', Courier, monospace;
+        font-size: var(--font-size-md);
+    
+    }
 }
 
 ::-webkit-scrollbar {
     display: none;
-  }
+}
 
 .comments-detail {
-    max-height: 20em;
+    max-height: 15em;
     overflow: scroll;
     scrollbar-color: hidden;
+    background-color: var(--beige-darker);
 
     .comment {
         background-color: #fff;
@@ -316,6 +362,46 @@ video {
         }
     }
 }
+
+.q-en-a {
+    position: relative;
+    height: 40px;
+    max-width: fit-content;
+    width: 800%;
+    margin: 0 20px;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button {
+    right: 20px;
+    font-size: var(--font-size-md);
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    padding: var(--padding-button);
+    border-radius: 6px;
+    background-color: var(--dark-green);
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    transform: translateY(-50%);
+}
+
+.q-en-a input {
+    height: 40px;
+    width: 100%;
+    outline: none;
+    font-size: var(--font-size-lg);
+    font-weight: 400;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    padding: 0 100px 0 10px;
+    background-color: #fff;
+}
+
 
 .speaker-detail {
     display: grid;
@@ -351,9 +437,15 @@ video {
     font-family: "Lato", 'Courier New', Courier, monospace;
     font-size: var(--font-size-md);
     font-weight: 400;
-    max-height: 20em;
+    max-height: 15em;
     overflow: scroll;
     scrollbar-color: hidden;
+
+    summary{
+        font-family: "Lato", 'Courier New', Courier, monospace;
+        font-size: var(--font-size-md);
+    
+    }
 }
 
 
@@ -362,16 +454,19 @@ video {
 .h1404 {
     font-size: var(--font-size-6xl);
     justify-self: center;
+    padding-left: 5%;
 }
 
 .h2404 {
     font-size: var(--font-size-6xl);
     justify-self: center;
+    padding-left: 5%;
 }
 
 .p404 {
     font-size: var(--font-size-lg);
     justify-self: center;
+    padding-left: 5%;
 }
 
 
@@ -431,4 +526,13 @@ video {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
+}
+
+
+
+/*      MARK: ANNIMATIE     */
+
+.load-state {
+    background-color: var(--light-green);
+    color: #000;
 }
