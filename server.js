@@ -89,7 +89,7 @@ app.get("/webinars/:slug", async function (request, response) {
   // detail id ophalen
   const webinarID = await fetch("https://fdnd-agency.directus.app/items/avl_webinars?fields=id&filter[slug][_eq]=" + slug)
   const webinarIDJSON = await webinarID.json();
-  const webID = webinarIDJSON.data[0].id;
+  const webID = webinarIDJSON.data[0];
 
   // webinar data ophalen
   // const webinarsdetailResponse = await fetch(`https://fdnd-agency.directus.app/items/avl_webinars/?fields=thumbnail,date,video,duration,description,transcript,title,speakers.*.*,categories.*.*,views,id&filter={"id":"${request.params.id}"}`)
@@ -115,10 +115,10 @@ app.get("/webinars/:slug", async function (request, response) {
 
 
 // Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
-app.post('/detail/:id', async function (request, response) {
+app.post("/webinars/:slug/:id", async function (request, response) {
 
   // In request.body zitten alle formuliervelden die een `name` attribuut hebben in je HTML
-  console.log(request.body)
+  console.log(request.body.comment)
 
   // Via een fetch() naar Directus vullen we nieuwe gegevens in
 
@@ -126,20 +126,18 @@ app.post('/detail/:id', async function (request, response) {
   // Zie https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify over JSON.stringify()
   // Zie https://docs.directus.io/reference/items.html#create-an-item over het toevoegen van gegevens in Directus
   // Zie https://docs.directus.io/reference/items.html#update-an-item over het veranderen van gegevens in Directus
-  await fetch(`https://fdnd-agency.directus.app/items/avl_comments`, {
+  const results =  await fetch(`https://fdnd-agency.directus.app/items/avl_comments`, {
     method: "POST",
     body: JSON.stringify({
+      webinar_id: request.params.slug,
       content: request.body.comment
     }),
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
-    
-  });
+    headers: {'Content-Type': 'application/json;charset=UTF-8'}
+    });  
 
   // Redirect de gebruiker daarna naar een logische volgende stap
   // Zie https://expressjs.com/en/5x/api.html#res.redirect over response.redirect()
-  response.redirect(303,`/detail/${request.params.id}`)
+  response.redirect(303, `/webinars/${request.params.slug}`)
 })
 
 

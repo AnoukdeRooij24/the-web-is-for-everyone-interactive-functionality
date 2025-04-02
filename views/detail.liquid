@@ -1,5 +1,6 @@
 {% render 'partials/head.liquid' %}
 
+<p class="back">Back to <a href="/webinars">webinars</a></p>
 
 <h1> {{ webdetail.title }} </h1>
 
@@ -35,23 +36,18 @@
     </section>
 
     <h3>Ask a question</h3>
-    {% comment %} <section class="q-en-a">
-        <form  action="/detail/{{ webdetail.id }}" method="post">
-            <input type="text" name="comment" placeholder="Ask your question here..." />
-            <button type="submit" class="button">Submit</button>
-        </form>
-    </section> {% endcomment %}
-
     <section class="q-en-a">
         {% if posted %}
             <!-- Ideal state -->
-            <form class="comments-form" action="/detail/{{ webdetail.id }}" method="post" data-enhanced="form-{{ webdetail.id }}" >
+            {% comment %} <form  action="/webinars/:slug/{{ webdetail.id }}" method="post" data-enhanced="form-{{ webdetail.id }}" > {% endcomment %}
+            <form action="/webinars/{{ webdetail.slug }}/{{ webdetail.id }}" method="post" data-enhanced="form-{{ webdetail.id }}">
+
                 <input type="text" name="comment" placeholder="Ask your question here..." />
-                <button type="submit" class="submit-button">Sent</button>
+                <button type="submit" class="submit-button">Submit</button>
             </form>
         {% else %}
             <!-- Empty state -->
-            <form class="comments-form" action="/detail/{{ webdetail.id }}" method="post" data-enhanced="form-{{ webdetail.id }}" >
+            <form  action="/webinars/:slug/{{ webdetail.id }}" method="post" data-enhanced="form-{{ webdetail.id }}" >
                 <input type="text" name="comment" placeholder="Ask your question here..." />
                 <button type="submit" class="submit-button">Submit</button>
             </form>

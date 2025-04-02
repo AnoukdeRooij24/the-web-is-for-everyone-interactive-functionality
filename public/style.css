@@ -285,6 +285,12 @@ footer {
 
 /*      MARK: DETAIL WEBINAR     */
 
+.back {
+    background-color: var(--light-green);
+    padding: var(--padding-button);
+    max-width: fit-content;
+    border-radius: var(--border-radius-md);
+}
 
 video {
     width: 90%;
@@ -354,7 +360,7 @@ video {
     .comment {
         background-color: #fff;
         border-radius: var(--border-radius-sm);
-        padding: var(--padding-button);
+        padding: var(--padding-);
         max-width: 90%;
 
         @media (width > 36em) {
