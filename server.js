@@ -71,65 +71,45 @@ app.get('/404', async function (request, response) {
 // WEBINARS
 app.get('/webinars', async function (request, response) {
   const apiWebinars = "webinars"
-  const webinarFields = '?fields=title,thumbnail,date,categories.*.*,speakers.*.*'
+  const webinarFields = '?fields=title,thumbnail,date,slug,categories.*.*,speakers.*.*'
   
   const webinarsResponse = await fetch(`${apiEndpoint}${apiWebinars}${webinarFields}`)
   const webinarsResponseJSON = await webinarsResponse.json()
 
   response.render('webinars.liquid', {    
     categories: categoriesResponseJSON.data, 
-    comments: commentsResponseJSON.data, 
-    contourings: contouringsResponseJSON.data, 
     speakers: speakersResponseJSON.data, 
-    users: usersResponseJSON.data, 
     webinars: webinarsResponseJSON.data })
 })
 
 
+app.get("/webinars/:slug", async function (request, response) { 
+  const slug = request.params.slug;
 
-// DETAIL
-// app.get('/detail', async function (request, response) {
-//   const apiWebinars = "webinars"
-//   const webinarFields = '?fields=title,thumbnail,date,categories.*.*,speakers.*.*'
-//   const viewField = '?fields=views,id'
+  // detail id ophalen
+  const webinarID = await fetch("https://fdnd-agency.directus.app/items/avl_webinars?fields=id&filter[slug][_eq]=" + slug)
+  const webinarIDJSON = await webinarID.json();
+  const webID = webinarIDJSON.data[0].id;
 
-//   const webinarsResponse = await fetch(`${apiEndpoint}${apiWebinars}${webinarFields}`)
-//   const webinarsResponseJSON = await webinarsResponse.json()
-
-//   const viewsFieldResponse = await fetch(`${apiEndpoint}${apiWebinars}${viewField}&filter={%22id%22:${request.params.id}}`) 
-//   // const viewFieldResponse = await fetch(`${viewField}`)
-//   const viewsFieldResponseJSON = await viewsFieldResponse.json()
-//   console.log(viewsFieldResponseJSON)
-
-//   response.render('detail.liquid', {
-//     categories: categoriesResponseJSON.data, 
-//     comments: commentsResponseJSON.data, 
-//     contourings: contouringsResponseJSON.data, 
-//     speakers: speakersResponseJSON.data, 
-//     users: usersResponseJSON.data, 
-//     webinars: webinarsResponseJSON.data,
-//     views: viewsFieldResponseJSON.data })
-// })
-
-
-app.get("/detail/:id", async function (request, response) { 
-  const webinarsdetailResponse = await fetch(`https://fdnd-agency.directus.app/items/avl_webinars/?fields=thumbnail,date,video,duration,description,transcript,title,speakers.*.*,categories.*.*,views,id&filter={"id":"${request.params.id}"}`)
+  // webinar data ophalen
+  // const webinarsdetailResponse = await fetch(`https://fdnd-agency.directus.app/items/avl_webinars/?fields=thumbnail,date,video,duration,description,transcript,title,speakers.*.*,categories.*.*,views,id&filter={"id":"${request.params.id}"}`)
+  const webinarsdetailResponse = await fetch(`https://fdnd-agency.directus.app/items/avl_webinars?filter[slug][_eq]=${slug}&fields=thumbnail,id,slug,date,video,duration,description,resources.*.*,transcript,title,speakers.*.*,categories.*.*,views`)
   const webinarsdetailResponseJSON = await webinarsdetailResponse.json()
 
-  const commentsResponse = await fetch(`https://fdnd-agency.directus.app/items/avl_comments/?fields=content,id`);
+  // data comments ophalen
+  // const commentsResponse = await fetch(`https://fdnd-agency.directus.app/items/avl_comments/?fields=content,id`);
+  const commentsResponse = await fetch("https://fdnd-agency.directus.app/items/avl_comments?filter[webinar_id][_eq]=" + webID);
   const commentsResponseJSON = await commentsResponse.json()
+ 
+    // console.log(commentsResponseJSON)
+    // console.log(webinarsdetailResponseJSON)
 
-  console.log(commentsResponseJSON)
+  response.render('detail.liquid', { 
+    webdetail: webinarsdetailResponseJSON.data[0],
+    comments: commentsResponseJSON.data
+  })
 
-// console.log(webinarsdetailResponseJSON)
-
-response.render('detail.liquid', { 
-  webdetail: webinarsdetailResponseJSON.data[0],
-  comments: commentsResponseJSON.data
-
-})
-
-// console.log(webinarsdetailResponseJSON.data)
+    // console.log(webinarsdetailResponseJSON.data)
 })
 
 

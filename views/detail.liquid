@@ -45,13 +45,13 @@
     <section class="q-en-a">
         {% if posted %}
             <!-- Ideal state -->
-            <form  action="/detail/{{ webdetail.id }}" method="post" data-enhanced="form-{{ webdetail.id }}" >
+            <form class="comments-form" action="/detail/{{ webdetail.id }}" method="post" data-enhanced="form-{{ webdetail.id }}" >
                 <input type="text" name="comment" placeholder="Ask your question here..." />
                 <button type="submit" class="submit-button">Sent</button>
             </form>
         {% else %}
             <!-- Empty state -->
-            <form  action="/detail/{{ webdetail.id }}" method="post" data-enhanced="form-{{ webdetail.id }}" >
+            <form class="comments-form" action="/detail/{{ webdetail.id }}" method="post" data-enhanced="form-{{ webdetail.id }}" >
                 <input type="text" name="comment" placeholder="Ask your question here..." />
                 <button type="submit" class="submit-button">Submit</button>
             </form>

@@ -62,6 +62,9 @@ if ('fetch' in window && 'DOMParser' in window) {
     const parser = new DOMParser()
     const responseDOM = parser.parseFromString(responseText, 'text/html')
 
+    // button voor de chatfunctie verwijderen
+    // form.closest(".comments-form")?.remove()
+    
     // Zoek in die nieuwe DOM onze nieuwe state op, die we via Liquid hebben klaargemaakt
     // We gebruiken hiervoor het data-enhanced attribuut, zodat we weten waar we naar moeten zoeken
     // (Hierdoor kunnen we ook meerdere formulieren op dezelfde pagina gebruiken)

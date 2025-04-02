@@ -6,7 +6,7 @@
 <section>
     <div class="search-bar">
       <input type="text" placeholder="Search here..." />
-      <button class="button2">Search</button>
+      <button class="button">Search</button>
     </div>
 
     <ul class="category-list">
@@ -23,31 +23,31 @@
 <section class="webinar-container">
     {% for webinar in webinars %}
 
-        <article class="webinar-item">
+        <a href=" /webinars/{{ webinar.slug }}" class="webinar-detail-link">
+            <article class="webinar-item">
 
-                {% comment %} TUMBNAIL {% endcomment %}
-                <img class="tumbnail-webinar" src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}"  />
+                    {% comment %} TUMBNAIL {% endcomment %}
+                    <img class="tumbnail-webinar" src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}"  />
 
-            <a href="/detail/:id" class="webinar-detail-link">
+                    {% comment %} TITLE {% endcomment %}
+                    <p class="title-webinar">{{ webinar.title }}</p>
 
-                {% comment %} TITLE {% endcomment %}
-                <p class="title-webinar">{{ webinar.title }}</p>
+                    {% comment %} SPEAKER {% endcomment %}
+                    {% for speaker in webinar.speakers %}
+                        <p class="speaker-webinar"> {{ speaker.avl_speakers_id.fullname }}</p>
+                    {% endfor %}
 
-                {% comment %} SPEAKER {% endcomment %}
-                {% for speaker in webinar.speakers %}
-                    <p class="speaker-webinar"> {{ speaker.avl_speakers_id.fullname }}</p>
-                {% endfor %}
+                    {% comment %} DATE {% endcomment %}
+                    <p class="date-webinar">{{ webinar.date }}</p>
 
-                {% comment %} DATE {% endcomment %}
-                <p class="date-webinar">{{ webinar.date }}</p>
+                    {% comment %} CATEGORY {% endcomment %}
+                    {% for category in webinar.categories %}
+                        <p class="category-label"> {{ category.avl_categories_id.name }}</p>
+                    {% endfor %}
 
-                {% comment %} CATEGORY {% endcomment %}
-                {% for category in webinar.categories %}
-                    <p class="category-label"> {{ category.avl_categories_id.name }}</p>
-                {% endfor %}
+            </article>
+        </a>
 
-            </a>
-        </article>
 
     {% endfor %}
 </section>
