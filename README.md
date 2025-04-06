@@ -42,6 +42,22 @@ Op de detail pagina van een webinar vind de opdrachtgever het belangrijk dat je 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framework of library gebruikt? -->
 
+### Chatten / reactie achterlaten
+Zoals je hieronder ziet kan je een reactie achterlaten bij een webinar. 
+![image](https://github.com/user-attachments/assets/63f633d6-36bb-4db1-a49d-ed8d6331a8b2) <br>
+<br>
+Als je op de submit button klikt, dan wordt deze even licht groen om aan te tonen dat hij bezig is (de loading state). Zodra het berichtje verstuurd is wordt de knop weer donkergroen en kan je opnieuw een reactie achterlaten.
+Dit heb ik gedaan doormiddel van een Post in de sever: <br>
+https://github.com/AnoukdeRooij24/the-web-is-for-everyone-interactive-functionality/blob/8994871612f6386ae314e46963c4c1d37d9d356c/server.js#L118-L141 <br>
+Hierna laat ik de comments zien op de webpagina met de volgende code: <br>
+https://github.com/AnoukdeRooij24/the-web-is-for-everyone-interactive-functionality/blob/8994871612f6386ae314e46963c4c1d37d9d356c/views/detail.liquid#L30-L36 <br>
+En als laatste de form waarmee de comments achter gelaten kunnen worden, hierop zit een if els state. Dat betekend dat als de if state (loading state) bezig is, de button er anders uit komt te zien. <br>
+https://github.com/AnoukdeRooij24/the-web-is-for-everyone-interactive-functionality/blob/8994871612f6386ae314e46963c4c1d37d9d356c/views/detail.liquid#L38-L55 <br>
+Dit heb ik gedaan door de normale button te stylen met algemenen CSS: <br>
+https://github.com/AnoukdeRooij24/the-web-is-for-everyone-interactive-functionality/blob/8994871612f6386ae314e46963c4c1d37d9d356c/public/style.css#L383-L397 <br>
+En de loading state een eigen styling mee te geven. <br>
+https://github.com/AnoukdeRooij24/the-web-is-for-everyone-interactive-functionality/blob/8994871612f6386ae314e46963c4c1d37d9d356c/public/style.css#L383-L397
+
 ## Installatie
 <!-- Bij Installatie staat hoe een andere developer aan jouw repo kan werken -->
 Dit project is gemaakt in NodeJS. Daarom is het belangrijk dat dit eerst geinstaleerd is, daarna kunt u het project openen in de code-editor.
