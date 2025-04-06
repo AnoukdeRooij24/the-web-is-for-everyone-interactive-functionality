@@ -356,11 +356,12 @@ video {
     overflow: scroll;
     scrollbar-color: hidden;
     background-color: var(--beige-darker);
+    max-width: fit-content;
 
     .comment {
         background-color: #fff;
         border-radius: var(--border-radius-sm);
-        padding: var(--padding-);
+        padding: var(--padding-button);
         max-width: 90%;
 
         @media (width > 36em) {
