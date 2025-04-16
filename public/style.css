@@ -188,21 +188,26 @@ footer {
     padding: 1em;
 
     .home-logo-avl {
-        height: 3em ;
+        height: 3em;
+        width: 150px;
         margin: .3em;
 
         @media (width > 36em) {
             height: 9em;
+            width: 448px;
+
         }
 
     }
     
     .home-logo-sar {
         height: 4em;
+        width:170px;
         margin: .3em;
 
         @media (width > 36em) {
             height: 10em;
+            width:448px;
         }
     }
 }
